@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form user</title>
+
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <style type="text/tailwindcss">
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+    .input-group {
+      @apply flex flex-col text-gray-700;
+    }
+    .input-group .input-group-label {
+      @apply font-bold text-white mb-1 text-gray-700 flex flex-row justify-between items-center;
+    }
+    .input-group .input {
+      @apply block w-full px-2 py-1 transition duration-100 ease-in-out border border-gray-400 rounded 
+      shadow-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none focus:ring-opacity-50 
+      disabled:opacity-50 disabled:cursor-not-allowed;
+    }
+    .input-group .input.warning {
+      @apply border-red-400 focus:ring-red-300 text-red-600;
+    }
+    .input-group .input-group-label .info {
+      @apply font-normal text-xs text-gray-500;
+    }
+    .button {
+      @apply block px-4 py-2 transition duration-100 ease-in-out focus:border-indigo-500 focus:ring-2
+      focus:ring-indigo-500 focus:outline-none focus:ring-opacity-50 disabled:opacity-50 
+      disabled:cursor-not-allowed bg-indigo-500 w-full rounded font-bold text-white tracking-wide
+      hover:bg-indigo-600;
+    }
+  </style>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@800&family=Ubuntu:wght@300;700&display=swap');
+  </style>
+
+  <script
+    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+    crossorigin="anonymous"
+  ></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.8/jquery.mask.min.js" 
+    integrity="sha512-hAJgR+pK6+s492clbGlnrRnt2J1CJK6kZ82FZy08tm6XG2Xl/ex9oVZLE6Krz+W+Iv4Gsr8U2mGMdh0ckRH61Q==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+  </script>
+</head>
+<body>
+  <div class="w-full h-screen bg-slate-800">
+    <div class="p-5 flex flex-col justify-center items-center">
+      <div class="mb-5">
+        <h1 class="text-white text-4xl text-center tracking-wide"
+          style="font-family: 'Mukta'; font-weight: 800;">
+          Registrador de usuários
+        </h1>
+      </div>
+
+      <div class="bg-white p-5 rounded w-2/3">
+        <div class="mb-5">
+          <h2 class="text-indigo-500 text-2xl font-bold">
+            <i class="fa-solid fa-user mr-2"></i>
+            Cadastre um usuário...
+          </h2>
+        </div>
+        <div class="input-group mb-2">
+          <label for="name" class="input-group-label">Nome</label>
+          <input id="name" type="text" class="input">
+        </div>
+        <div class="input-group mb-2">
+          <label for="email" class="input-group-label">Email</label>
+          <input id="email" type="email" class="input">
+        </div>
+        <div class="input-group mb-2">
+          <label for="tel" class="input-group-label">
+            Telefone
+            <div class="info">Formato: (ddd)99999-9999</div>
+          </label>
+          <input id="tel" type="text" class="input">
+        </div>
+        <div class="input-group mb-2">
+          <label for="cep" class="input-group-label">
+            CEP
+            <div class="info">Formato: 01001000</div>
+          </label>
+          <input id="cep" type="text" class="input">
+        </div>
+        <div class="mt-5">
+          <button class="button">Cadastrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
