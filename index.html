@@ -28,7 +28,7 @@
       @apply font-bold text-white mb-1 text-gray-700 flex flex-row justify-between items-center;
     }
     .input-group .input {
-      @apply block w-full px-2 py-1 transition duration-100 ease-in-out border border-gray-400 rounded 
+      @apply block w-full px-2 py-1 transition duration-100 ease-in-out border border-slate-400 rounded 
       shadow-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none focus:ring-opacity-50 
       disabled:opacity-50 disabled:cursor-not-allowed;
     }
@@ -37,6 +37,9 @@
     }
     .input-group .input-group-label .info {
       @apply font-normal text-xs text-gray-500;
+    }
+    .input-group .input-error {
+      @apply font-bold text-xs text-red-600 mt-1;
     }
     .button {
       @apply block px-4 py-2 transition duration-100 ease-in-out focus:border-indigo-500 focus:ring-2
@@ -56,8 +59,8 @@
     crossorigin="anonymous"
   ></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.8/jquery.mask.min.js" 
-    integrity="sha512-hAJgR+pK6+s492clbGlnrRnt2J1CJK6kZ82FZy08tm6XG2Xl/ex9oVZLE6Krz+W+Iv4Gsr8U2mGMdh0ckRH61Q==" 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/6.4.2/imask.min.js"
+    integrity="sha512-l0grYOI8XZga5TajPOiqLrQVCKrdh+k0QSEtS+cpJlNeI8Nu9GOhsVaFyFQuPQfYp02GnhsyHqkPR7P7BTKYAQ==" 
     crossorigin="anonymous" referrerpolicy="no-referrer">
   </script>
 </head>
@@ -81,10 +84,12 @@
         <div class="input-group mb-2">
           <label for="name" class="input-group-label">Nome</label>
           <input id="name" type="text" class="input">
+          <span id="name-error" class="input-error"></span>
         </div>
         <div class="input-group mb-2">
           <label for="email" class="input-group-label">Email</label>
           <input id="email" type="email" class="input">
+          <span id="email-error" class="input-error"></span>
         </div>
         <div class="input-group mb-2">
           <label for="tel" class="input-group-label">
@@ -92,19 +97,26 @@
             <div class="info">Formato: (ddd)99999-9999</div>
           </label>
           <input id="tel" type="text" class="input">
+          <span id="tel-error" class="input-error"></span>
         </div>
         <div class="input-group mb-2">
           <label for="cep" class="input-group-label">
             CEP
-            <div class="info">Formato: 01001000</div>
+            <div class="info">Formato: 01.001-000</div>
           </label>
           <input id="cep" type="text" class="input">
+          <span id="cep-error" class="input-error"></span>
+          <div class="flex flex-row text-xs font-bold text-gray-700">
+            <div id="cep-result"></div>
+          </div>
         </div>
         <div class="mt-5">
-          <button class="button">Cadastrar</button>
+          <button id="register-button" class="button">Cadastrar</button>
         </div>
       </div>
     </div>
   </div>
+
+  <script src="./script.js"></script>
 </body>
 </html>
