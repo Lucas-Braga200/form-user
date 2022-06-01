@@ -12,9 +12,6 @@ $(() => {
   const maskTel = IMask(inputTel, {
     mask: '(00) 0000-0000'
   });
-  const maskEmail = IMask(inputEmail, {
-    mask: /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
-  });
 
   $(inputTel).keypress(function () {
     let value = maskTel.unmaskedValue;
@@ -57,6 +54,19 @@ $(() => {
     var pattern = /^[0-9]{2}\.[0-9]{3}-[0-9]{3}$/;
     if (cep.length > 0) {
       if (pattern.test(cep)) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
+  function isEmail(email) {
+    var pattern = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+    if (email.length > 0) {
+      if (pattern.test(email)) {
         return true;
       } else {
         return false;

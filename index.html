@@ -63,6 +63,11 @@
     integrity="sha512-l0grYOI8XZga5TajPOiqLrQVCKrdh+k0QSEtS+cpJlNeI8Nu9GOhsVaFyFQuPQfYp02GnhsyHqkPR7P7BTKYAQ==" 
     crossorigin="anonymous" referrerpolicy="no-referrer">
   </script>
+
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/0.5.12/MinFaker.js" integrity="sha512-+qHsuYJbatsUfmvRdKj5xyKJO1othF3ZeK/X6ap2pNJrHYtSdrNmZFTisz79wr+ddh1XIJs3EpsISWYkJEguwQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+
+  <script nomodule src="https://unpkg.com/browser-es-module-loader/dist/babel-browser-build.js"></script>
+  <script nomodule src="https://unpkg.com/browser-es-module-loader"></script>
 </head>
 <body>
   <div class="w-full h-screen bg-slate-800">
@@ -74,7 +79,7 @@
         </h1>
       </div>
 
-      <div class="bg-white p-5 rounded w-2/3">
+      <div class="bg-white p-5 rounded w-2/3 mb-10">
         <div class="mb-5">
           <h2 class="text-indigo-500 text-2xl font-bold">
             <i class="fa-solid fa-user mr-2"></i>
@@ -110,13 +115,25 @@
             <div id="cep-result"></div>
           </div>
         </div>
-        <div class="mt-5">
-          <button id="register-button" class="button">Cadastrar</button>
+        <div class="mt-5 flex flex-row">
+          <button id="register-button" class="button mr-5">Cadastrar</button>
+          <button id="generate-button" class="button">Gerar</button>
         </div>
+      </div>
+
+      <div class="bg-white p-5 rounded w-2/3">
+        <div class="mb-5">
+          <h2 class="text-indigo-500 text-2xl font-bold">
+            <i class="fa-solid fa-user mr-2"></i>
+            Usuários cadastrados
+          </h2>
+        </div>
+        <div></div>
       </div>
     </div>
   </div>
-
+  
+  <script type="module" src="https://unpkg.com/@faker-js/faker"></script>
   <script src="./script.js"></script>
 </body>
 </html>
