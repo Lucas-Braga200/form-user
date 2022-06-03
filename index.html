@@ -42,10 +42,26 @@
       @apply font-bold text-xs text-red-600 mt-1;
     }
     .button {
-      @apply block px-4 py-2 transition duration-100 ease-in-out focus:border-indigo-500 focus:ring-2
-      focus:ring-indigo-500 focus:outline-none focus:ring-opacity-50 disabled:opacity-50 
+      @apply flex flex-row justify-center items-center px-4 py-2 transition duration-100 ease-in-out focus:border-indigo-500
+      focus:ring-2 focus:ring-indigo-500 focus:outline-none focus:ring-opacity-50 disabled:opacity-50 
       disabled:cursor-not-allowed bg-indigo-500 w-full rounded font-bold text-white tracking-wide
       hover:bg-indigo-600;
+    }
+    .disabled {
+      @apply bg-indigo-400;
+    }
+
+    tr .table-data:first-child {
+      @apply pl-8;
+    }
+    tr .table-data:last-child {
+      @apply pr-8;
+    }
+    .table-data {
+      @apply border-b border-slate-100 p-4 text-slate-500 text-center md:text-left;
+    }
+    .table-data-empty {
+      @apply border-b border-slate-100 p-4 text-slate-500 text-center;
     }
   </style>
 
@@ -67,9 +83,15 @@
   ></script>
 
   <script src="./faker.js" charset="utf-8"></script>
+
+  <style>
+    html, body {
+      height: 100vh;
+    }
+  </style>
 </head>
-<body class="h-full">
-  <div class="w-full h-full bg-slate-800">
+<body class="bg-slate-800">
+  <div class="w-full h-full">
     <div class="p-5 flex flex-col justify-center items-center">
       <div class="mb-5">
         <h1 class="text-white text-4xl text-center tracking-wide"
@@ -108,7 +130,13 @@
             CEP
             <div class="info">Formato: 01.001-000</div>
           </label>
-          <input id="cep" type="text" class="input" />
+          <div class="flex flex-row">
+            <input id="cep" type="text" class="input" />
+            <button id="search-cep" class="flex flex-row justify-center items-center ml-3 block w-32 px-2 py-1 
+            transition duration-100 ease-in-out bg-indigo-500 rounded shadow-sm focus:border-indigo-500
+            focus:ring-2 focus:ring-indigo-500 focus:outline-none focus:ring-opacity-50 disabled:opacity-50
+            disabled:cursor-not-allowed hover:bg-indigo-600 text-white">Consultar</button>
+          </div>
           <span id="cep-error" class="input-error"></span>
           <div class="flex flex-row text-xs font-bold text-gray-700">
             <div id="cep-result"></div>
@@ -116,7 +144,7 @@
         </div>
         <div class="mt-5 flex flex-row">
           <button id="register-button" class="button mr-5">Cadastrar</button>
-          <button id="generate-button" class="button">Gerar Usuário</button>
+          <button id="random-button" class="button">Gerar Usuário</button>
         </div>
       </div>
 
@@ -128,7 +156,6 @@
           </h2>
         </div>
         <div>
-          <!-- Componente tabela retirado da documentação do TailwindCSS  -->
           <div class="mt-4">
             <div class="not-prose relative bg-slate-100 rounded overflow-hidden">
               <div class="relative rounded overflow-auto">
@@ -154,28 +181,7 @@
                         </th>
                       </tr>
                     </thead>
-                    <tbody class="bg-white">
-                      <tr>
-                        <td class="border-b border-slate-100 p-4 pl-8 text-slate-500 text-center md:text-left">The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                        <td class="border-b border-slate-100 p-4 text-slate-500 text-center md:text-left">Malcolm Lockyer</td>
-                        <td class="border-b border-slate-100 p-4 text-slate-500 text-center md:text-left">1961</td>
-                        <td class="border-b border-slate-100 p-4 pr-8 text-slate-500 text-center md:text-left">Rua Mato Grosso - Vila Santo André - Dourados/MS</td>
-                      </tr>
-                      <tr>
-                        <td class="border-b border-slate-100 p-4 pl-8 text-slate-500 text-center md:text-left">Witchy Woman</td>
-                        <td class="border-b border-slate-100 p-4 text-slate-500 text-center md:text-left">The Eagles</td>
-                        <td class="border-b border-slate-100 p-4 text-slate-500 text-center md:text-left">1972</td>
-                        <td class="border-b border-slate-100 p-4 pr-8 text-slate-500 text-center md:text-left">Rua Mato Grosso - Vila Santo André - Dourados/MS</td>
-                      </tr>
-                      <tr>
-                        <td class="border-b border-slate-200 p-4 pl-8 text-slate-500 text-center md:text-left">Shining Star</td>
-                        <td class="border-b border-slate-200 p-4 text-slate-500 text-center md:text-left">Earth, Wind, and Fire</td>
-                        <td class="border-b border-slate-200 p-4 text-slate-500 text-center md:text-left">1975</td>
-                        <td class="border-b border-slate-100 p-4 pr-8 text-slate-500 text-center md:text-left">Rua Mato Grosso - Vila Santo André - Dourados/MS</td>
-                      </tr>
-                      <tr>
-                        <td class="border-b border-slate-100 p-4 pr-8 text-slate-500 text-center" colspan="4">Não há nenhum usuário...</td>
-                      </tr>
+                    <tbody class="bg-white" id="user-table-body">
                     </tbody>
                   </table>
                 </div>
